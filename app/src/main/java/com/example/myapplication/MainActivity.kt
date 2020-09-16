@@ -1,24 +1,22 @@
 package com.example.myapplication
 
-import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.graphics.Color.GREEN
-import android.graphics.Color.red
-import android.graphics.drawable.Drawable
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.provider.CalendarContract
 import android.text.TextUtils
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,6 +37,10 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AppCenter.start(application, "58d21be6-17de-41b2-96b5-5cc01cb716a7",
+                Analytics::class.java, Crashes::class.java)
+
         setContentView(R.layout.activity_main)
 
         val constraintLayout = this.findViewById<ConstraintLayout>(R.id.MainView);
